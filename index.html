@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WSE Wealth Training</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,31 +97,38 @@ button svg { width: 18px; height: 18px; }
 .legal a { color: var(--ink); }
 
 @media (max-width: 520px) {
-  body { font-size: 16px; }
-  h1 { font-size: clamp(26px, 7.4vw, 30px); line-height: 1.12; letter-spacing: -0.02em; text-wrap: pretty; }
+  body { font-size: 18px; }
+  h1 { font-size: clamp(31px, 8.8vw, 37px); line-height: 1.1; letter-spacing: -0.025em; text-wrap: pretty; }
   .hero .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .aside { font-size: 15px; margin-top: 14px; }
-  .sub { margin-top: 18px; font-size: 16.5px; }
-  .warn .wrap { padding-block: 12px; }
-  .warn p { font-size: 14px; }
-  .warn .tri { width: 17px; height: 17px; margin-right: 6px; }
+  .aside { font-size: 17px; margin-top: 14px; }
+  .sub { margin-top: 18px; font-size: 18.5px; line-height: 1.5; }
+  .warn .wrap { padding-block: 14px; }
+  .warn p { font-size: 16px; }
+  .warn .tri { width: 19px; height: 19px; margin-right: 6px; }
   .pair { gap: 6px; }
-  .arrow { width: 26px; height: 26px; margin-top: -40px; }
-  .arrow svg { width: 13px; height: 13px; }
-  .tag-l { top: 8px; left: 8px; font-size: 10px; padding: 5px 8px; letter-spacing: .14em; }
-  .cap { font-size: 12.5px; }
-  .phone { grid-template-columns: 122px minmax(0, 1fr); gap: 8px; }
+  .arrow { width: 28px; height: 28px; margin-top: -44px; }
+  .arrow svg { width: 14px; height: 14px; }
+  .tag-l { top: 8px; left: 8px; font-size: 11.5px; padding: 6px 9px; letter-spacing: .14em; }
+  .cap { font-size: 14.5px; }
+  .credit .n { font-size: 17px; }
+  .credit .r { font-size: 15px; }
+  .lead { font-size: 22px; }
+  label { font-size: 14px; }
+  input, select { height: 58px; font-size: 18px; }
+  .phone { grid-template-columns: 128px minmax(0, 1fr); gap: 8px; }
   select#cc { padding: 0 26px 0 12px; }
-  input, select { height: 54px; }
-  button { font-size: 14px; letter-spacing: .06em; height: 58px; padding: 0 14px; }
+  button { font-size: 16px; letter-spacing: .05em; height: 62px; padding: 0 14px; }
+  .after { font-size: 15.5px; }
+  .legal { font-size: 13.5px; }
+  .notice { font-size: 15.5px; }
 }
 @media (max-width: 360px) {
-  h1 { font-size: 25px; }
-  .warn p { font-size: 13px; }
-  .cap { font-size: 11.5px; }
-  .phone { grid-template-columns: 114px minmax(0, 1fr); }
-  select#cc { padding: 0 22px 0 10px; font-size: 15px; }
-  button { font-size: 13px; letter-spacing: .04em; }
+  h1 { font-size: 29px; }
+  .warn p { font-size: 14.5px; }
+  .cap { font-size: 13px; }
+  .phone { grid-template-columns: 118px minmax(0, 1fr); }
+  select#cc { padding: 0 22px 0 10px; font-size: 16px; }
+  button { font-size: 14.5px; letter-spacing: .03em; }
 }
 @media (min-width: 1400px) {
   .copy { max-width: 900px; }

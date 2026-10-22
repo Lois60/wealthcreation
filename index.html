@@ -223,7 +223,7 @@ button svg { width: 18px; height: 18px; }
   const CONFIG = {
     supabaseUrl: "https://qwhhtggkzzznpjyswdna.supabase.co",
     supabaseKey: "sb_publishable_8CLcrQNrByOhB2XLb_Htlw_FaGn3hmH",
-    salesPageUrl: "",      // e.g. https://wealth.winniesschoolofexcellence.com/replay
+    salesPageUrl: "/replay.html",      // e.g. https://wealth.winniesschoolofexcellence.com/replay
     metaPixelId: "",       // e.g. 123456789012345
     headlineVariant: "h1-testimonial"
   };
@@ -279,7 +279,7 @@ button svg { width: 18px; height: 18px; }
       if (!res.ok) throw new Error("save-failed");
       if (window.fbq) fbq("track", "Lead");
       if (CONFIG.salesPageUrl) {
-        const next = new URL(CONFIG.salesPageUrl);
+        const next = new URL(CONFIG.salesPageUrl, location.href);
         ["utm_source","utm_medium","utm_campaign","utm_content","fbclid"].forEach(k => params.get(k) && next.searchParams.set(k, params.get(k)));
         location.href = next.toString();
         return;

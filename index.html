@@ -292,13 +292,7 @@ button svg { width: 18px; height: 18px; }
       notice.textContent = "You're in. The sales page link isn't set yet, so this preview stops here.";
       notice.hidden = false;
     } catch (err) {
-      const preview = !/winniesschoolofexcellence|vercel\.app/.test(location.hostname);
-      if (preview && err.message !== "save-failed") {
-        notice.textContent = "Preview mode: this preview can't reach the database. On the live page, these details save to Supabase and the visitor goes straight to the sales page.";
-        notice.hidden = false;
-      } else {
-        msg.textContent = "We couldn't save your details. Check your connection and tap the button again.";
-      }
+      msg.textContent = "We couldn't save your details. Check your connection and tap the button again.";
     } finally {
       btn.disabled = false; btn.firstChild.textContent = "Teach me the secret she used ";
     }

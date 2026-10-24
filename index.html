@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WSE Wealth Replay</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&display=swap">
@@ -671,8 +674,8 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
     <p>If I charged what this training is really worth, it would be nothing less than ₦500,000. My one-on-one consultation alone is ₦200,000 for 90 minutes. This is 6 hours.</p>
     <p>But I am not charging ₦500,000. I am not even charging half of that.</p>
     <div class="plan">
-      <div class="prices"><span class="was">₦500,000</span><span class="now-price">₦5,000</span></div>
-      <p class="today">Today, you get the full replay for just ₦5,000.</p>
+      <div class="prices"><span class="was">₦500,000</span><span class="now-price">₦15,000</span></div>
+      <p class="today">Today, you get the full replay for just ₦15,000.</p>
       <a class="btn block buy" href="#offer">Yes, give me the wealth secrets now<span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       <p class="caption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure payment</p>
       <p class="msg" hidden></p>
@@ -688,7 +691,7 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
       <p>You can spend them the way you spent the rest of it: another scheme, another promise that this one will be different, another December where you smile in pictures and panic in private.</p>
       <p>Or you can spend them learning the rules money actually obeys, and putting them to work right away.</p>
       <p>Learn what is in this replay, and even if what you sell is bread, the next 3 months can be the best your finances have ever seen.</p>
-      <p>My Elite members paid to be in that room. You get the full 6 hours, at your own pace, for ₦5,000.</p>
+      <p>My Elite members paid to be in that room. You get the full 6 hours, at your own pace, for ₦15,000.</p>
     </div>
   </div>
 </section>
@@ -706,7 +709,7 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
 </section>
 
 <div class="sticky-buy" id="sticky" aria-hidden="true">
-  <div class="p"><s>₦500,000</s>₦5,000</div>
+  <div class="p"><s>₦500,000</s>₦15,000</div>
   <a class="cta buy" href="#offer" tabindex="-1">Get instant access now</a>
 </div>
 
@@ -714,7 +717,7 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
 (() => {
   // ---- Settings to fill in before going live ----
   const CONFIG = {
-    checkoutUrl: "https://winniesschoolofexcellence.com/checkout/?add-to-cart=15965",   // Paystack / Flutterwave / Selar payment link for ₦5,000
+    checkoutUrl: "https://winniesschoolofexcellence.com/checkout/?add-to-cart=15965",   // Paystack / Flutterwave / Selar payment link for ₦15,000
     videoEmbed: "",    // e.g. https://www.youtube.com/embed/VIDEO_ID or https://player.vimeo.com/video/ID
     deadline: "",      // e.g. "Friday, 31 October 2026"
     metaPixelId: ""
@@ -722,7 +725,7 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
 
   if (CONFIG.metaPixelId) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', CONFIG.metaPixelId); fbq('track', 'PageView'); fbq('track', 'ViewContent', { value: 5000, currency: 'NGN' });
+    fbq('init', CONFIG.metaPixelId); fbq('track', 'PageView'); fbq('track', 'ViewContent', { value: 15000, currency: 'NGN' });
   }
 
   if (CONFIG.videoEmbed) {
@@ -755,12 +758,12 @@ select { appearance: none; -webkit-appearance: none; background-image: linear-gr
       a.href = u.toString();
     }
     a.addEventListener("click", (e) => {
-      if (window.fbq) fbq("track", "InitiateCheckout", { value: 5000, currency: "NGN" });
+      if (window.fbq) fbq("track", "InitiateCheckout", { value: 15000, currency: "NGN" });
       if (!CONFIG.checkoutUrl) {
         e.preventDefault();
         const m = a.parentElement.querySelector(".msg") || document.querySelector("#offer .msg");
         if (a.closest("#sticky")) offer.scrollIntoView({ behavior: "smooth" });
-        m.textContent = "Checkout isn't connected yet. Once the payment link is added, this button opens the ₦5,000 checkout.";
+        m.textContent = "Checkout isn't connected yet. Once the payment link is added, this button opens the ₦15,000 checkout.";
         m.hidden = false;
       }
     });

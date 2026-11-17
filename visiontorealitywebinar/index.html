@@ -807,6 +807,18 @@ img.g-av { object-fit: cover; padding: 0; border: 2px solid var(--gold); }
 .intro .btn { margin: 0 auto; }
 @media (max-width: 900px) { .h-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) { .lesson-split, .wb-grid { grid-template-columns: minmax(0, 1fr); } .h-stats > div { padding: 16px; } .h-stats b { font-size: 32px; } }
+
+/* Tap to watch alert */
+.tap-watch { display: inline-flex; align-items: center; gap: 10px; margin: 22px auto 0; padding: 10px 18px 10px 12px; border-radius: 999px; background: #FEF3F2; border: 1px solid #FDA29B; color: #B42318; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; box-shadow: 0 12px 28px -18px rgba(217,45,32,.6); }
+.hero .narrow { display: flex; flex-direction: column; align-items: center; }
+.tw-dot { width: 10px; height: 10px; border-radius: 50%; background: #D92D20; box-shadow: 0 0 0 0 rgba(217,45,32,.5); animation: tw-pulse 1.6s ease-out infinite; }
+.tw-play { width: 28px; height: 28px; border-radius: 50%; background: #D92D20; color: #fff; display: grid; place-items: center; }
+.tw-play svg { width: 13px; height: 13px; margin-left: 2px; }
+.tw-down svg { width: 18px; height: 18px; animation: tw-bob 1.4s ease-in-out infinite; }
+.tap-watch:hover { background: #FEE4E2; }
+@keyframes tw-pulse { 0% { box-shadow: 0 0 0 0 rgba(217,45,32,.5); } 70% { box-shadow: 0 0 0 10px rgba(217,45,32,0); } 100% { box-shadow: 0 0 0 0 rgba(217,45,32,0); } }
+@keyframes tw-bob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (max-width: 480px) { .tap-watch { font-size: 13.5px; letter-spacing: .08em; } }
 </style>
 </head>
 <body>
@@ -815,6 +827,7 @@ img.g-av { object-fit: cover; padding: 0; border: 2px solid var(--gold); }
   <div class="wrap narrow">
     <h1>A year from now, will you be living differently or <mark>rewriting the same goals?</mark></h1>
     <p class="lede">Before you set your goals for 2027, understand what has been getting in the way of the life you want.</p>
+    <a class="tap-watch" href="#screen"><span class="tw-dot" aria-hidden="true"></span><span class="tw-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>Tap to watch<span class="tw-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
   </div>
   <div class="wrap video">
     <div class="stage">

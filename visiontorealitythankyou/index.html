@@ -89,6 +89,22 @@ a:focus-visible { outline: 3px solid #5ADBFF; outline-offset: 3px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .tick path { stroke-dashoffset: 0; } }
 </style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1103456639133073');
+fbq('track', 'PageView');
+(function () {
+  // Purchase fires once per order. The WooCommerce redirect adds ?order=ID so Meta can de-duplicate.
+  var id = (location.search.match(/[?&]order=(\d+)/) || [])[1] || '';
+  var key = 'wse_vtr_purchase_' + (id || 'noid'), sent = false;
+  try { sent = localStorage.getItem(key) === '1'; } catch (e) {}
+  if (sent) return;
+  var opts = id ? { eventID: 'order-' + id } : {};
+  fbq('track', 'Purchase', { value: 20000, currency: 'NGN', content_name: 'From Vision to Reality Webinar 2026', content_ids: ['16545'], content_type: 'product' }, opts);
+  try { localStorage.setItem(key, '1'); } catch (e) {}
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1103456639133073&amp;ev=PageView&amp;noscript=1"></noscript>
 </head>
 <body>
 

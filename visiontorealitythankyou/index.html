@@ -91,17 +91,30 @@ a:focus-visible { outline: 3px solid #5ADBFF; outline-offset: 3px; }
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1103456639133073');
-fbq('track', 'PageView');
 (function () {
-  // Purchase fires once per order. The WooCommerce redirect adds ?order=ID so Meta can de-duplicate.
-  var id = (location.search.match(/[?&]order=(\d+)/) || [])[1] || '';
-  var key = 'wse_vtr_purchase_' + (id || 'noid'), sent = false;
-  try { sent = localStorage.getItem(key) === '1'; } catch (e) {}
-  if (sent) return;
-  var opts = id ? { eventID: 'order-' + id } : {};
-  fbq('track', 'Purchase', { value: 20000, currency: 'NGN', content_name: 'From Vision to Reality Webinar 2026', content_ids: ['16545'], content_type: 'product' }, opts);
-  try { localStorage.setItem(key, '1'); } catch (e) {}
+  var PIXEL = '1103456639133073';
+  var TOKEN = 'EAA83JdNGtzwBS0zxSVz8bUuo3ABZBIpvZAIapNN9if9cCDZA7uM8JoO9gTfcBtCWZC0INnOVXkWBcI5nMx6HwrhNMGJE69qmJFNRcrD7lh4IpXHVDXyppuU4gS5RsZA7ReXIimLc5bvl0rxZBZARwgJZAWsoiDTfzmGmMKOzQoUtP6BZCn9TJmD1OJaDODNmEna5IaAZDZD';
+  fbq('init', PIXEL);
+  function ck(n) { var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); return m ? m[1] : ''; }
+  // Send each event through the browser pixel and the Conversions API with a shared event ID, so Meta counts it once
+  function track(name, data, id) {
+    id = id || (name + '.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10));
+    fbq('track', name, data || {}, { eventID: id });
+    var user = { client_user_agent: navigator.userAgent }, fbp = ck('_fbp'), fbc = ck('_fbc');
+    if (fbp) user.fbp = fbp; if (fbc) user.fbc = fbc;
+    var body = JSON.stringify({ data: [{ event_name: name, event_time: Math.floor(Date.now() / 1000), event_id: id, action_source: 'website', event_source_url: location.href, user_data: user, custom_data: data || {} }] });
+    try { fetch('https://graph.facebook.com/v21.0/' + PIXEL + '/events?access_token=' + encodeURIComponent(TOKEN), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {}); } catch (e) {}
+  }
+  setTimeout(function () {
+    track('PageView');
+    // Purchase fires once per buyer (once per order when the order number is in the link)
+    var order = (location.search.match(/[?&]order=(\d+)/) || [])[1] || '';
+    var key = 'wse_vtr_purchase_' + (order || 'noid'), sent = false;
+    try { sent = localStorage.getItem(key) === '1'; } catch (e) {}
+    if (sent) return;
+    track('Purchase', { value: 20000, currency: 'NGN', content_name: 'From Vision to Reality Webinar 2026', content_ids: ['16545'], content_type: 'product' }, order ? 'order-' + order : '');
+    try { localStorage.setItem(key, '1'); } catch (e) {}
+  }, 600);
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1103456639133073&amp;ev=PageView&amp;noscript=1"></noscript>
